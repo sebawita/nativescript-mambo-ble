@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "target": "es6",
+        "module": "commonjs",
+        "removeComments": false,
+        "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "declaration": true
+    },
+    "files": [
+        "drone-characteristic.ts",
+        "drone-notifications-characteristic.ts",
+        "drone-scanner.ts",
+        "drone.ts",
+        "index.ts"
+    ],
+    "compileOnSave": false
+}

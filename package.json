@@ -1,0 +1,53 @@
+{
+  "name": "nativescript-mambo-ble",
+  "version": "0.0.1",
+  "description": "NativeScript plugin that allows to control a Parrot Mambo drone.",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "android": "2.5.0",
+      "ios": "2.5.0"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "demo.ios": "npm run preparedemo && cd demo && tns emulate ios",
+    "demo.android": "npm run preparedemo && cd demo && tns run android",
+    "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-mambo-ble && tns plugin add .. && tns install",
+    "preparedemo-ng": "npm run build && cd demo-ng && tns plugin remove nativescript-mambo-ble && tns plugin add .. && tns install",
+    "setup": "npm i && cd demo && npm i && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebawita/nativescript-mambo-ble.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "Android",
+    "iOS"
+  ],
+  "author": {
+    "name": "Sebastian Witalec",
+    "email": "sebawita@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/sebawita/nativescript-mambo-ble/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/sebawita/nativescript-mambo-ble/blob/master/LICENSE"
+  },
+  "homepage": "https://github.com/sebawita/nativescript-mambo-ble",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "tns-core-modules": "^2.5.2",
+    "tns-platform-declarations": "2.5.2",
+    "typescript": "~2.1.0"
+  },
+  "dependencies": {
+    "nativescript-bluetooth": "^1.1.4",
+    "rxjs": "^5.2.0"
+  }
+}

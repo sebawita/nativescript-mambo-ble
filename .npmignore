@@ -1,0 +1,8 @@
+demo/
+demo-bak/
+demo-ng/
+demo-test/
+node_modules/
+*.png
+*.log
+*.map

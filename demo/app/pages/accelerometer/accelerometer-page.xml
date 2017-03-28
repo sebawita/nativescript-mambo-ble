@@ -1,0 +1,37 @@
+<page:DrawerPage
+  navigatingTo="navigatingTo"
+  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
+  xmlns:d="pages/drawer"
+  xmlns:ab="pages/action-bar"
+  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
+  xmlns:js="nativescript-joystick">
+
+  <page:DrawerPage.actionBar>
+    <ab:action-bar-template />
+  </page:DrawerPage.actionBar>
+
+  <page:DrawerPage.sideDrawer>
+    <drawer:RadSideDrawer id="side-drawer" drawerSize="260"
+      xmlns:drawer="nativescript-telerik-ui/sidedrawer">
+      <drawer:RadSideDrawer.drawerContent>
+        <d:drawer-content />
+      </drawer:RadSideDrawer.drawerContent>
+      <drawer:RadSideDrawer.drawerTransition>
+        <drawer:PushTransition />
+      </drawer:RadSideDrawer.drawerTransition>
+    </drawer:RadSideDrawer>
+  </page:DrawerPage.sideDrawer>
+
+  <StackLayout class="m-t-5">
+    <Button text="Start" tap="{{ startAccelerometer }}" class="btn btn-primary" />
+    <Button text="Stop" tap="{{ stopAccelerometer }}" class="btn btn-primary" />
+    <!--<Button text="Switch Gear" tap="{{ switchGear }}" />-->
+    
+    <js:JoyStick
+      padColor="black"
+      buttonColor="white"
+      width="75%" height="30%"
+      vertical="{{altitude}}">
+    </js:JoyStick>
+  </StackLayout>
+</page:DrawerPage>

@@ -1,0 +1,60 @@
+<page:DrawerPage navigatingTo="navigatingTo"
+  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
+  xmlns:d="pages/drawer"
+  xmlns:ab="pages/action-bar"
+  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
+  xmlns:js="nativescript-joystick"
+  >
+
+  <page:DrawerPage.actionBar>
+    <ab:action-bar-template />
+  </page:DrawerPage.actionBar>
+
+  <page:DrawerPage.sideDrawer>
+    <drawer:RadSideDrawer id="side-drawer" drawerSize="260"
+      xmlns:drawer="nativescript-telerik-ui/sidedrawer">
+      <drawer:RadSideDrawer.drawerContent>
+        <d:drawer-content />
+      </drawer:RadSideDrawer.drawerContent>
+      <drawer:RadSideDrawer.drawerTransition>
+        <drawer:PushTransition />
+      </drawer:RadSideDrawer.drawerTransition>
+    </drawer:RadSideDrawer>
+  </page:DrawerPage.sideDrawer>
+
+  <StackLayout class="m-t-5">
+    <Button text="Start" tap="{{ startJoystick }}" class="btn btn-primary" />
+    <Button text="Stop" tap="{{ stopJoystick }}" class="btn btn-primary" />
+
+    <StackLayout orientation="horizontal" height="30%">
+      <js:JoyStick
+        padColor="black"
+        buttonColor="white"
+        width="50%"
+        vertical="{{altitude}}">
+      </js:JoyStick>
+      <!--<js:JoyStick
+        padColor="green"
+        buttonColor="red"
+        width="50%">
+      </js:JoyStick>-->
+    </StackLayout>
+
+    <StackLayout orientation="horizontal">
+      <js:JoyStick
+        padColor="black"
+        buttonColor="white"
+        width="50%"
+        vertical="{{pitch}}"
+        horizontal="{{roll}}">
+      </js:JoyStick>
+
+      <js:JoyStick
+        padColor="blue"
+        buttonColor="red"
+        width="50%"
+        horizontal="{{yaw}}">
+      </js:JoyStick>
+    </StackLayout>
+  </StackLayout>
+</page:DrawerPage>
