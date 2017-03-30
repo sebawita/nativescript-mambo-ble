@@ -1,6 +1,6 @@
 {
   "name": "nativescript-mambo-ble",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "NativeScript plugin that allows to control a Parrot Mambo drone.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -47,7 +47,7 @@
     "typescript": "~2.1.0"
   },
   "dependencies": {
-    "nativescript-bluetooth": "^1.1.4",
+    "nativescript-bluetooth": "^1.1.5",
     "rxjs": "^5.2.0"
   }
 }
