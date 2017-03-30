@@ -1,4 +1,4 @@
-import { startNotifying, stopNotifying, setCharacteristicLogging } from 'nativescript-bluetooth';
+import { startNotifying, stopNotifying } from 'nativescript-bluetooth';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 export class DroneNotificationsCharacteristic {
@@ -17,8 +17,6 @@ export class DroneNotificationsCharacteristic {
     if(this.subject) {
       return new Promise(resolve => resolve());
     }
-
-    setCharacteristicLogging(false)
 
     const initialValue: number[] = [];
     this.subject = new Subject<number[]>();
