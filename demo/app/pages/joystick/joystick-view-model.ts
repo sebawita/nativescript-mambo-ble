@@ -1,6 +1,6 @@
 import { Observable } from "data/observable";
 
-import { ConnectedDrones } from "../../all-drones";
+import { ConnectedDrones } from "../../connected-drone";
 
 export class JoyStickViewModel extends Observable {
     public title = "JoyStick";
@@ -13,7 +13,7 @@ export class JoyStickViewModel extends Observable {
     private loop: number = null;
 
     public startJoystick() {
-        ConnectedDrones.takeOff();
+        ConnectedDrones.drone.takeOff();
 
         if (this.loop)
             return;
@@ -22,7 +22,7 @@ export class JoyStickViewModel extends Observable {
     }
 
     public stopJoystick() {
-        ConnectedDrones.land();
+        ConnectedDrones.drone.land();
 
         this.set("turnSpeed", 0);
         this.set("speed", 0);
@@ -46,7 +46,7 @@ export class JoyStickViewModel extends Observable {
 
             // console.log(`${this.roll}, ${this.pitch}, ${this.yaw}, ${this.altitude}`);
 
-            ConnectedDrones.updateFlightParams(this.roll/2, this.pitch/2, this.yaw, this.altitude/2);
+            ConnectedDrones.drone.updateFlightParams(this.roll/2, this.pitch/2, this.yaw, this.altitude/2);
 
             // if (this.speed > 0 || this.turnSpeed) {
             //   ConnectedDrones.updateFlightParams(0, 0, 0, 70);

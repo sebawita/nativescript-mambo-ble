@@ -3,7 +3,7 @@ import frameModule = require('ui/frame');
 import { DroneScanner, Drone } from 'nativescript-mambo-ble';
 
 import { RadListView, ListViewEventData } from 'nativescript-telerik-ui/listview';
-import { ConnectedDrones } from '../../all-drones';
+import { ConnectedDrones } from '../../connected-drone';
 
 export class ScanViewModel {
   public title = 'Scanner';
@@ -26,7 +26,7 @@ export class ScanViewModel {
     var drone: Drone = this.devicesAround.getItem(args.itemIndex);
     drone.connect(this.onDisconnected)
     .then((UUID) => {
-      ConnectedDrones.addDrone(drone);
+      ConnectedDrones.setDrone(drone);
       alert('Device Connected');
     })
   }
@@ -58,7 +58,7 @@ export class ScanViewModel {
   }
 
   private onDisconnected(drone: Drone) {
-    ConnectedDrones.removeDrone(drone);
+    ConnectedDrones.removeDrone();
   }
 }
 

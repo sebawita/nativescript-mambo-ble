@@ -1,7 +1,7 @@
 import { Observable } from "data/observable";
 import { startAccelerometerUpdates, stopAccelerometerUpdates } from "nativescript-accelerometer"
 
-import { ConnectedDrones } from "../../all-drones";
+import { ConnectedDrones } from "../../connected-drone";
 
 export class AccelerometerViewModel extends Observable {
   public title = "Accelerometer";
@@ -16,7 +16,7 @@ export class AccelerometerViewModel extends Observable {
   private loop: number = null;
 
   public startAccelerometer() {
-    ConnectedDrones.takeOff();
+    ConnectedDrones.drone.takeOff();
 
     if (this.accelerometerActive) {
       return;
@@ -33,7 +33,7 @@ export class AccelerometerViewModel extends Observable {
   }
 
   public stopAccelerometer() {
-    ConnectedDrones.land();
+    ConnectedDrones.drone.land();
 
     if (this.accelerometerActive) {
       stopAccelerometerUpdates();
@@ -48,7 +48,7 @@ export class AccelerometerViewModel extends Observable {
     }
 
     this.loop = setInterval(() => {
-      ConnectedDrones.updateFlightParams(this.roll, this.pitch, this.yaw, this.altitude);
+      ConnectedDrones.drone.updateFlightParams(this.roll, this.pitch, this.yaw, this.altitude);
     }, 100);
   }
 
