@@ -21,17 +21,29 @@
   </page:DrawerPage.sideDrawer>
 
   <StackLayout class="m-t-5">
-    <Button text="Take Off" tap="{{ takeOff }}" />
-    <Button text="Land" tap="{{ land }}" />
+    <Button text="Take Off" tap="{{ takeOff }}" class="btn btn-primary" />
+    <Button text="Land" tap="{{ land }}" class="btn btn-primary" />
+    <Button text="Fire" tap="{{ fire }}" class="btn btn-primary btn-ruby" />
     
-    <Label text="{{ 'Yaw:' + yaw }}" class="text-center" />
-    <Slider minValue="-100" maxValue="100" value="{{ yaw }}" class="slider" />
+    <Label text="{{ 'Speed:' + speed }}" class="text-center" />
+    <Slider minValue="0" maxValue="100" value="{{ speed }}" class="slider" />
 
-    <Label text="{{ 'Altitude:' + altitude}}" class="text-center" />
-    <Slider minValue="-100" maxValue="100" value="{{ altitude }}" class="slider" />
+    <GridLayout rows="auto, auto, auto, auto" columns="*, *">
+      <Button row="0" col="0" text="Pitch Forward" tap="{{ pitchForward }}" class="btn btn-primary btn-orange" />
+      <Button row="1" col="0" text="Pitch Back" tap="{{ pitchBack }}" class="btn btn-primary btn-orange" />
+      
+      <Button row="0" col="1" text="Altitude Up" tap="{{ altitudeUp }}" class="btn btn-primary btn-brown" />
+      <Button row="1" col="1" text="Altitude Down" tap="{{ altitudeDown }}" class="btn btn-primary btn-brown" />
+      
+      <Button row="2" col="0" text="Roll Left" tap="{{ rollLeft }}" class="btn btn-primary btn-forest" />
+      <Button row="2" col="1" text="Roll Right" tap="{{ rollRight }}" class="btn btn-primary btn-forest" />
 
-    <Button text="Update Yaw" tap="{{ updateYaw }}" />
-    <Button text="Update Altitude" tap="{{ updateAltitude }}" />
+      
+      <Button row="3" col="0" text="Yaw Left" tap="{{ yawLeft }}" class="btn btn-primary btn-lime" />
+      <Button row="3" col="1" text="Yaw Right" tap="{{ yawRight }}" class="btn btn-primary btn-lime" />
+      
+    </GridLayout>
+
 
     <!--<Label text="{{ 'Speed:' + speed}}" class="text-center" />
     <Slider minValue="0" maxValue="0x20" value="{{ speed }}" class="slider" />

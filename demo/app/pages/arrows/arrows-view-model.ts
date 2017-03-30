@@ -1,55 +1,72 @@
 import {Observable} from "data/observable";
-import {ConnectedDrones} from "../../all-drones";
+import {ConnectedDrones} from "../../connected-drone";
 
 export class ArrowsViewModel extends Observable {
   public title = "Arrows";
 
-  private _yaw: number = 0;
-  get yaw() {
-    return this._yaw;
+  private _speed: number = 30;
+  get speed() {
+    return this._speed;
   }
-  set yaw(val: number) {
-    this._yaw = Math.round(val);
-  }
-
-  private _altitude: number = 0;
-  get altitude() {
-    return this._altitude;
-  }
-  set altitude(val: number) {
-    this._altitude = Math.round(val);
+  set speed(val: number) {
+    this._speed = Math.round(val);
   }
 
   public takeOff() {
-    ConnectedDrones.takeOff();
+    ConnectedDrones.drone.takeOff();
   }
 
   public land() {
-    ConnectedDrones.land();
+    ConnectedDrones.drone.land();
   }
 
-  public updateYaw() {
-    ConnectedDrones.updateFlightParams(0, 0, this.yaw/100, 0);
-  }
-  public updateAltitude() {
-    ConnectedDrones.updateFlightParams(0, 0, 0, this.altitude/100);
+  public fire() {
+    ConnectedDrones.drone.fire();
   }
 
-  public moveForward() {
-    // AllDrones.moveForward(this.speed);
+  private clearTimeout(handle) {
+    if (handle > 0) {
+      clearTimeout(handle);
+      handle = -1;
+    }
   }
 
-  public moveBack() {
-    // AllDrones.moveBack(this.speed);
+  public rollLeft() {
+    ConnectedDrones.drone.setRoll(-this.speed);
+    setTimeout(() => ConnectedDrones.drone.setRoll(0), 500)
+  }
+  public rollRight() {
+    ConnectedDrones.drone.setRoll(this.speed);
+    setTimeout(() => ConnectedDrones.drone.setRoll(0), 500)
   }
 
-  public turnLeft() {
-    // AllDrones.turnLeft(this.speed, this.turnSpeed);
+  public pitchForward() {
+    ConnectedDrones.drone.setPitch(this.speed);
+    setTimeout(() => ConnectedDrones.drone.setPitch(0), 500)
+  }
+  public pitchBack() {
+    ConnectedDrones.drone.setPitch(-this.speed);
+    setTimeout(() => ConnectedDrones.drone.setPitch(0), 500)
   }
 
-  public turnRight() {
-    // AllDrones.turnRight(this.speed, this.turnSpeed);
+  public yawLeft() {
+    ConnectedDrones.drone.setYaw(-this.speed);
+    setTimeout(() => ConnectedDrones.drone.setYaw(0), 500)
   }
+  public yawRight() {
+    ConnectedDrones.drone.setYaw(this.speed);
+    setTimeout(() => ConnectedDrones.drone.setYaw(0), 500)
+  }
+
+  public altitudeUp() {
+    ConnectedDrones.drone.setAltitude(this.speed);
+    setTimeout(() => ConnectedDrones.drone.setAltitude(0), 500)
+  }
+  public altitudeDown() {
+    ConnectedDrones.drone.setAltitude(-this.speed);
+    setTimeout(() => ConnectedDrones.drone.setAltitude(0), 500)
+  }
+
 }
 
 export var arrowsViewModel = new ArrowsViewModel();
