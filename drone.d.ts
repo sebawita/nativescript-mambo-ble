@@ -47,6 +47,7 @@ export declare class Drone {
     stopFlightLoop(): void;
     takeOff(): void;
     land(): void;
+    fire(): void;
     updateFlightParams(roll: number, pitch: number, yaw: number, altitude: number): void;
     /**
      * Sets the roll speed of drone's flight params

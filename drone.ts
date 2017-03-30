@@ -76,7 +76,7 @@ export class Drone  {
     .then(() => this.setMaxRotationSpeed(150)) // 150 °/s
     .then(() => {
       this.listenToFlightStatus()
-      .then(() => this.listenToBatteryStatus())
+      // .then(() => this.listenToBatteryStatus())
       
       this.startFlightLoop(); 
     })
@@ -151,7 +151,9 @@ export class Drone  {
   }
 
   stopListeningToFlightStatus() {
-    this.flightStatus.stopNotifying();
+    if (this.flightStatus) {
+      this.flightStatus.stopNotifying();
+    }
   }
 
   listenToBatteryStatus() {
@@ -200,6 +202,10 @@ export class Drone  {
     this.pitch = 0;
     this.yaw = 0;
     this.altitude = 0;
+  }
+
+  public fire() {
+    this.flightCommandInstructions.writeWithoutResponse([16, 2, 0, 0, 0, 0, 0, 0]);
   }
 
   public updateFlightParams(roll: number, pitch: number, yaw: number, altitude: number) {
